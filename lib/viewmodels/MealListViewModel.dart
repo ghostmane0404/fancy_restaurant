@@ -13,6 +13,8 @@ class MealListViewModel with ChangeNotifier {
   LoadingStatus loadingStatus = LoadingStatus.empty;
   List<MealViewModel> meals = List<MealViewModel>();
   List<MealViewModel> mealsShort = List<MealViewModel>();
+  //List<MealViewModel> filtered = List<MealViewModel>();
+  Set<String> _categories = Set<String>();
   int _currentMax = 10;
 
   void getTenMeals() async{
@@ -40,8 +42,25 @@ class MealListViewModel with ChangeNotifier {
       print("triggered< current max is:" + _currentMax.toString());
     }
   }
-
+ /* getCategories(){
+    for(int i =0;i<meals.length;i++){
+      _categories.add(meals[i].category);
+    }
+    return _categories.toList();
+  }*/
   getDetail(int position){
     return meals[position];
   }
+
+ /* getFilteredData(String filterValue){
+    filtered.removeRange(0, filtered.length-1);
+    for(int i = 0;i<meals.length;i++)
+      {
+        if(meals[i].category == filterValue)
+          {
+            filtered.add(meals[i]);
+          }
+      }
+    return filtered;
+  }*/
 }
